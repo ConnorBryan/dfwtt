@@ -1,0 +1,87 @@
+.Header {
+  min-height: 10vh;
+  max-height: 10vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Contact {
+  min-height: 5vh;
+}
+
+.Content {
+  min-height: 75vh;
+  max-height: 75vh;
+  position: relative;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.Content-header {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+  padding-left: 1rem !important;
+}
+
+.NavPanel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+.NavPanel-item {
+  padding: 0 !important;
+}
+
+.NavPanel-item:hover {
+  background: #F2F3F4;
+}
+
+.NavPanel-item__active {
+  background: #F2F3F4;
+}
+
+.NavPanel-content {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.NavPanel-lastItem:hover {
+  background: #F2F3F4;
+}
+
+.NavPanel-lastItem {
+  padding: 0 !important;
+  border-bottom: 1px solid rgba(30, 32, 34, 0.2);  
+}
+
+.Footer {
+  min-height: 10vh;
+  max-height: 10vh;
+  position: relative;
+  border-top: 1px solid rgba(30, 32, 34, 0.2);
+}
+
+.Footer-emailButton {
+  position: absolute;
+  top: 22%;
+  left: 2%;
+}
+
+.Footer-callButton {
+  position: absolute;
+  top: 22%;
+  left: 45%;
+}
+
+.Footer-menuButton {
+  position: absolute;
+  top: 22%;
+  right: 2%;
+}
+
+.Footer-icon {
+  margin: 0 !important;  
+}
