@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 
-import { Header, Button, Icon, List, Card, Image, Message } from 'semantic-ui-react';
+import { Header, Button, Icon, List, Card, Image, Message, Segment, Menu, Dropdown } from 'semantic-ui-react';
 
 const DFWTT = {
   logo: '/dfwtt.gif',
@@ -210,7 +210,48 @@ const Locations = () => (
   </div>
 );
 
-const Coaching = () => <p>Coaching</p>
+const Pricing = () => (
+  <p>Pricing</p>
+);
+
+const Instructors = () => (
+  <p>Instructors</p>
+);
+
+const Coaching = props => (
+  <Router>
+    <div className="Coaching">
+      <Header
+        className="Content-header"
+        as="h2">
+        Coaching
+      </Header>
+        <Menu attached="top">
+          <Menu.Item
+            active={props.screen === 0}
+            onClick={props.toggleScreen}>
+            Pricing
+          </Menu.Item>
+          <Menu.Item
+            active={props.screen === 1}
+            onClick={props.toggleScreen}>
+            Instructors
+          </Menu.Item>
+        </Menu>
+        <Segment attached="bottom">
+          {
+            props.screen === 0 ? (
+              <Pricing />
+            )
+            : (
+              <Instructors />
+            )
+          }
+        </Segment>
+    </div>
+  </Router>
+);
+
 const Membership = () => <p>Membership</p>
 
 class App extends Component {
@@ -218,11 +259,16 @@ class App extends Component {
     super();
     this.state = {
       navPanelShowing: false,
+      coachingScreen: 0,
     }
   }
 
   toggleNavPanel = () => {
     this.setState(prevState => ({ navPanelShowing: !prevState.navPanelShowing }));
+  }
+
+  toggleCoachingScreen = () => {
+    this.setState(prevState => ({ coachingScreen: +!prevState.coachingScreen }));
   }
 
   getActiveRoute = () => {
@@ -263,14 +309,14 @@ class App extends Component {
           <div className="Content">
             {this.state.navPanelShowing
               ? <NavPanel
-                getActiveRoute={this.getActiveRoute} 
-                clickThroughListItem={this.clickThroughListItem}
-                toggleNavPanel={this.toggleNavPanel} />
+                  getActiveRoute={this.getActiveRoute} 
+                  clickThroughListItem={this.clickThroughListItem}
+                  toggleNavPanel={this.toggleNavPanel} />
               : (
                 <div className="Content-routes">
                   <Route exact path="/" component={News} />
                   <Route path="/locations" component={Locations} />
-                  <Route path="/coaching" component={Coaching} />
+                  <Route path="/coaching" render={() => <Coaching screen={this.state.coachingScreen} toggleScreen={this.toggleCoachingScreen} />} />
                   <Route path="/membership" component={Membership} />
                 </div>
               )}
