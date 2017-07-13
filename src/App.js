@@ -116,21 +116,21 @@ const DFWTT = {
     pricing: [
       {
         package: 'Junior (U-10) Group Lessons',
-        price: '$80.00',
+        price: 80,
         lessons: 4,
         players: 'minimum two players',
         length: '1 hour',
       },
       {
         package: 'Junior (U-10) One-on-One Lessons',
-        price: '$120.00',
+        price: 120,
         lessons: 4,
         players: 'one on one',
         length: '1 hour',
       },
       {
         package: 'Adult (U-10) One-on-One Lessons',
-        price: '$140.00',
+        price: 140,
         lessons: 4,
         players: 'one on one',
         length: '1 hour',
@@ -140,6 +140,33 @@ const DFWTT = {
 
     ],
   },
+  dropBy: 3,
+  membership: [
+    {
+      package: 'One Month',
+      single: 20,
+      family2: 35,
+      family3: 45,
+    },
+    {
+      package: 'Three Months',
+      single: 55,
+      family2: 85,
+      family3: 110,
+    },
+    {
+      package: 'Half Year',
+      single: 90,
+      family2: 135,
+      family3: 180,
+    },
+    {
+      package: 'One Year (Best Deal)',
+      single: 150,
+      family2: 220,
+      family3: 270,
+    },
+  ],
 };
 
 const NavPanel = props => (
@@ -265,7 +292,7 @@ const Pricing = () => (
         </Item.Content>
         <Item.Extra className="pull-right">
           <Header as="h2">
-            {_package.price}
+            ${_package.price}.00
           </Header>
         </Item.Extra>
       </Item>
@@ -311,7 +338,37 @@ const Coaching = props => (
   </Router>
 );
 
-const Membership = () => <p>Membership</p>
+const Membership = () => (
+  <div className="Membership">
+    <Header
+      className="Content-header"
+      as="h2">
+      Membership
+    </Header>
+    <Segment>
+      <Item.Group divided>
+        {DFWTT.membership.map((_package, i) => (
+          <Item key={i}>
+            <Item.Content>
+              <Item.Header>
+                {_package.package}
+              </Item.Header>
+              <Item.Description>
+                Single: <strong>${_package.single}.00</strong>
+              </Item.Description>
+              <Item.Description>
+                Family of two: <strong>${_package.family2}.00</strong>
+              </Item.Description>
+              <Item.Description>
+                Family of three: <strong>${_package.family3}.00</strong>
+              </Item.Description>
+            </Item.Content>
+          </Item>
+        ))}
+      </Item.Group>
+    </Segment>
+  </div>
+);
 
 class App extends Component {
   constructor() {
