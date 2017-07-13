@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import {
+  Button,
+  Card,
+  Header,
+  Icon,
+  Image,
+  List,
+  Menu,
+  Message,
+  Segment,
+} from 'semantic-ui-react';
 import './App.css';
-
-import { Header, Button, Icon, List, Card, Image, Message, Segment, Menu, Dropdown } from 'semantic-ui-react';
 
 const DFWTT = {
   logo: '/dfwtt.gif',
@@ -109,6 +118,7 @@ const NavPanel = props => (
     <List divided relaxed="very">
       {DFWTT.pages.map((page, i) => (
         <List.Item
+          key={i}
           className={`${i === DFWTT.pages.length - 1 ? 'NavPanel-lastItem' : 'NavPanel-item'} ${props.getActiveRoute() === page.value ? 'NavPanel-item__active' : ''}`}
           onClick={() => props.clickThroughListItem(page.title)}>
           <List.Content className="NavPanel-content">
@@ -128,8 +138,8 @@ const News = () => (
       News
     </Header>
     <Card.Group stackable doubling>
-      {DFWTT.news.map(news => (
-        <Card>
+      {DFWTT.news.map((news, i) => (
+        <Card key={i}>
           <Image src={news.image} />
           <Card.Content>
             <Card.Header>
@@ -139,8 +149,10 @@ const News = () => (
               {news.description}
             </Card.Description>
           </Card.Content>
-          {news.links && news.links.length > 0 && news.links.map(link => (
-            <Card.Content extra>
+          {news.links && news.links.length > 0 && news.links.map((link, i) => (
+            <Card.Content
+              key={i}
+              extra>
               <Button fluid>
                 <Link to={link.path}>
                   {link.title}
