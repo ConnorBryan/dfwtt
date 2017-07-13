@@ -85,3 +85,7 @@
 .Footer-icon {
   margin: 0 !important;  
 }
+
+.pull-right {
+  text-align: right;
+}

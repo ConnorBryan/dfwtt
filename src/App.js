@@ -6,6 +6,7 @@ import {
   Header,
   Icon,
   Image,
+  Item,
   List,
   Menu,
   Message,
@@ -111,6 +112,34 @@ const DFWTT = {
       directions: 'https://www.google.com/maps/place/6060+Dilbeck+Ln,+Dallas,+TX+75240/@32.9292,-96.8036111,17z/data=!3m1!4b1!4m5!3m4!1s0x864c20fa8be63af1:0x96164675e63cb247!8m2!3d32.9292!4d-96.8014224?hl=en',
     },
   ],
+  coaching: {
+    pricing: [
+      {
+        package: 'Junior (U-10) Group Lessons',
+        price: '$80.00',
+        lessons: 4,
+        players: 'minimum two players',
+        length: '1 hour',
+      },
+      {
+        package: 'Junior (U-10) One-on-One Lessons',
+        price: '$120.00',
+        lessons: 4,
+        players: 'one on one',
+        length: '1 hour',
+      },
+      {
+        package: 'Adult (U-10) One-on-One Lessons',
+        price: '$140.00',
+        lessons: 4,
+        players: 'one on one',
+        length: '1 hour',
+      },
+    ],
+    instructors: [
+
+    ],
+  },
 };
 
 const NavPanel = props => (
@@ -174,8 +203,8 @@ const Locations = () => (
       Locations
     </Header>
     <Card.Group stackable doubling>
-      {DFWTT.locations.map(location => (
-        <Card>
+      {DFWTT.locations.map((location, i) => (
+        <Card key={i}>
           <Image src={location.image} />
           <Card.Content>
             <Card.Header>
@@ -201,8 +230,8 @@ const Locations = () => (
                 Schedule
               </Header>
               <List>
-                {location.schedule.map(day => (
-                  <List.Item>
+                {location.schedule.map((day, i) => (
+                  <List.Item key={i}>
                     <strong>{day.day}:</strong> {day.time}
                   </List.Item>
                 ))}
@@ -223,7 +252,25 @@ const Locations = () => (
 );
 
 const Pricing = () => (
-  <p>Pricing</p>
+  <Item.Group divided>
+    {DFWTT.coaching.pricing.map((_package, i) => (
+      <Item key={i}>
+        <Item.Content>
+          <Item.Header>
+            {_package.package}
+          </Item.Header>
+          <Item.Description>
+            {_package.lessons} lessons, {_package.players}, {_package.length} session.
+          </Item.Description>
+        </Item.Content>
+        <Item.Extra className="pull-right">
+          <Header as="h2">
+            {_package.price}
+          </Header>
+        </Item.Extra>
+      </Item>
+    ))}
+  </Item.Group>
 );
 
 const Instructors = () => (
@@ -338,6 +385,7 @@ class App extends Component {
             <Button
               className="Footer-menuButton"
               onClick={this.toggleNavPanel}
+              toggle={this.state.navPanelShowing}
               circular>
               <Icon
                 className="Footer-icon"
