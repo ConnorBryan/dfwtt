@@ -1,11 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
-
-import {
-  Button,
-  Icon,
-} from 'semantic-ui-react';
-import './App.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Header from './components/Header/Header';
 import Contact from './components/Contact/Contact';
@@ -15,8 +9,11 @@ import About from './components/About/About';
 import Locations from './components/Locations/Locations';
 import Coaching from './components/Coaching/Coaching';
 import Membership from './components/Membership/Membership';
+import Footer from './components/Footer/Footer';
 
 import DFWTT from './common/constants';
+
+import './App.css';
 
 class App extends Component {
   constructor() {
@@ -90,7 +87,7 @@ class App extends Component {
             email={DFWTT.email}
             phone={DFWTT.phone} />
 
-          <div className="Content">
+          <div className="App-content">
             {this.state.navPanelShowing
               ? <NavPanel
                   pages={DFWTT.pages}
@@ -98,7 +95,7 @@ class App extends Component {
                   clickThroughListItem={this.clickThroughListItem}
                   toggleNavPanel={this.toggleNavPanel} />
               : (
-                <div className="Content-routes">
+                <div>
                   <Route exact path="/" render={this.renderNews} />
                   <Route path="/about" render={this.renderAbout} />
                   <Route path="/locations" render={this.renderLocations} />
@@ -107,17 +104,10 @@ class App extends Component {
                 </div>
               )}
           </div>
-          <div className="Footer">
-              <Button
-                className="Footer-menuButton"
-                onClick={this.toggleNavPanel}
-                toggle={this.state.navPanelShowing}
-                circular>
-                <Icon
-                  className="Footer-icon"
-                  name='bars' /> Menu
-              </Button>
-          </div>
+          
+          <Footer
+            navPanelShowing={this.state.navPanelShowing}
+            toggleNavPanel={this.toggleNavPanel} />
         </div>
       </Router>
     );
