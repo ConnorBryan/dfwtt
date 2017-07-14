@@ -1,6 +1,6 @@
 export default {
   about: {
-    summary: 'Welcome to the DFW Table Tennis (DFWTT) website.  We are one of the leading table tennis membership organizations in the nation, affiliated with the USA Table Tennis (USATT) the governing body of table tennis in the United States.',
+    summary: 'Welcome to the DFW Table Tennis (DFWTT) website.<br /><br />We are one of the leading table tennis membership organizations in the nation, affiliated with the USA Table Tennis (USATT) the governing body of table tennis in the United States.',
     qualities: [
       'DFWTT is an organization that promotes, develops and implements programs for the sport of table tennis regardless of the player’s experience, through family values, excellence and quality in a sportsmanship environment in the Dallas & Fort Worth area.',
       'Our main goal is to build a stronger table tennis community in the Metroplex!  DFWTT is open to all ages, ethnicities, genders and playing levels.  Players will have the opportunity to learn on and off the table skills, make lasting friends and have lots of fun!  Come and play this amazing, popular and rapidly growing Olympic sport!',

@@ -4,12 +4,19 @@
   position: relative;
   overflow-x: hidden;
   overflow-y: auto;
+  padding-top: 1rem;
 }
 
 .Content-header {
   padding-top: 1rem !important;
   padding-bottom: 1rem !important;
   padding-left: 1rem !important;
+  letter-spacing: 0.25rem;
+  text-transform: uppercase !important;
+}
+
+.button {
+  text-transform: uppercase !important;
 }
 
 .pull-right {

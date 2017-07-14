@@ -17,8 +17,10 @@ export default props => (
       <Link
         className="Header-title"
         to="/">
-          <Header as="h3">
-            {props.title}
+          <Header
+            className="Header-header"
+            as="h5">
+            <span dangerouslySetInnerHTML={{ __html: props.title }} />
           </Header>
         </Link>
     </Menu>

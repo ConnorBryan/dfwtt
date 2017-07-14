@@ -1,5 +1,6 @@
 import React from 'react';
 import { Header, Segment, Message, Image, List } from 'semantic-ui-react';
+import './About.css';
 
 export default props => (
  <div className="About">
@@ -11,9 +12,10 @@ export default props => (
     <Segment>
       <Message>
         <Image
+          className="About-image"
           src={props.logo}
           size="large" />
-        {props.about.summary}
+        <span dangerouslySetInnerHTML={{ __html: props.about.summary }} />
       </Message>
       <Header as="h3">
         Our Qualities
