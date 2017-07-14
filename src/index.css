@@ -24,39 +24,6 @@
   padding-left: 1rem !important;
 }
 
-.NavPanel {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  text-align: center;
-}
-
-.NavPanel-item {
-  padding: 0 !important;
-}
-
-.NavPanel-item:hover {
-  background: #F2F3F4;
-}
-
-.NavPanel-item__active {
-  background: #F2F3F4;
-}
-
-.NavPanel-content {
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-}
-
-.NavPanel-lastItem:hover {
-  background: #F2F3F4;
-}
-
-.NavPanel-lastItem {
-  padding: 0 !important;
-  border-bottom: 1px solid rgba(30, 32, 34, 0.2);  
-}
-
 .Instructors {
   padding-top: 1rem;
 }

@@ -13,24 +13,8 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import './App.css';
+import NavPanel from './components/NavPanel/NavPanel';
 import DFWTT from './common/constants';
-  
-const NavPanel = props => (
-  <div className="NavPanel">
-    <List divided relaxed="very">
-      {DFWTT.pages.map((page, i) => (
-        <List.Item
-          key={i}
-          className={`${i === DFWTT.pages.length - 1 ? 'NavPanel-lastItem' : 'NavPanel-item'} ${props.getActiveRoute() === page.value ? 'NavPanel-item__active' : ''}`}
-          onClick={() => props.clickThroughListItem(page.title)}>
-          <List.Content className="NavPanel-content">
-            <Link to={page.path} onClick={props.toggleNavPanel} id={page.title}>{page.title}</Link>
-          </List.Content>
-        </List.Item>
-      ))}
-    </List>
-  </div>
-);
 
 const News = () => (
   <div className="News">
@@ -339,6 +323,7 @@ class App extends Component {
           <div className="Content">
             {this.state.navPanelShowing
               ? <NavPanel
+                  pages={DFWTT.pages}
                   getActiveRoute={this.getActiveRoute} 
                   clickThroughListItem={this.clickThroughListItem}
                   toggleNavPanel={this.toggleNavPanel} />
