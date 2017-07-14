@@ -1,20 +1,22 @@
 import React from 'react';
-import { Button, Icon } from 'semantic-ui-react';
+import { Menu, Button, Icon } from 'semantic-ui-react';
 import './Contact.css';
 
 export default props => (
   <div className="Contact">
-      <Button.Group fluid>
-        <a href={`mailto:${props.email}`}>
-          <Button>
+      <Menu
+        fluid
+        tabular>
+        <Menu.Item>
+          <a href={`mailto:${props.email}`}>
             <Icon name="mail outline" />
             {props.email}
-          </Button>
-        </a>
-        <Button>
+          </a>
+        </Menu.Item>
+        <Menu.Item>
           <Icon name="text telephone" />
           {props.phone}
-        </Button>
-      </Button.Group>
+        </Menu.Item>
+      </Menu>
   </div>
 )

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { Sidebar, Menu } from 'semantic-ui-react';
 
 import Header from './components/Header/Header';
 import Contact from './components/Contact/Contact';
-import NavPanel from './components/NavPanel/NavPanel';
 import News from './components/News/News';
 import About from './components/About/About';
 import Locations from './components/Locations/Locations';
@@ -86,28 +86,42 @@ class App extends Component {
           <Contact
             email={DFWTT.email}
             phone={DFWTT.phone} />
-
           <div className="App-content">
-            {this.state.navPanelShowing
-              ? <NavPanel
-                  pages={DFWTT.pages}
-                  getActiveRoute={this.getActiveRoute} 
-                  clickThroughListItem={this.clickThroughListItem}
-                  toggleNavPanel={this.toggleNavPanel} />
-              : (
-                <div>
-                  <Route exact path="/" render={this.renderNews} />
-                  <Route path="/about" render={this.renderAbout} />
-                  <Route path="/locations" render={this.renderLocations} />
-                  <Route path="/coaching" render={this.renderCoaching} />
-                  <Route path="/membership" render={this.renderMembership} />
-                </div>
-              )}
+            <Sidebar.Pushable className="App-sidebar">
+              <Sidebar
+                className="NavPanel"
+                as={Menu}
+                animation="overlay"
+                visible={this.state.navPanelShowing}
+                vertical>
+                {DFWTT.pages.map((page, i) => (
+                  <Menu.Item
+                    key={i}
+                    className={`
+                      ${this.getActiveRoute() === page.value ? 'NavPanel-item__active' : ''}
+                    `}
+                    onClick={() => this.clickThroughListItem(page.title)}>
+                    <Link
+                      id={page.title}
+                      to={page.path}
+                      onClick={this.toggleNavPanel} >
+                      {page.title}
+                    </Link>
+                  </Menu.Item>
+                ))}
+              </Sidebar>
+              <Sidebar.Pusher>
+                <Route exact path="/" render={this.renderNews} />
+                <Route path="/about" render={this.renderAbout} />
+                <Route path="/locations" render={this.renderLocations} />
+                <Route path="/coaching" render={this.renderCoaching} />
+                <Route path="/membership" render={this.renderMembership} />
+              </Sidebar.Pusher>
+            </Sidebar.Pushable>
+            <Footer
+              navPanelShowing={this.state.navPanelShowing}
+              toggleNavPanel={this.toggleNavPanel} />
           </div>
-          
-          <Footer
-            navPanelShowing={this.state.navPanelShowing}
-            toggleNavPanel={this.toggleNavPanel} />
         </div>
       </Router>
     );

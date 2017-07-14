@@ -8,7 +8,8 @@ export default props => (
       className="Footer-menuButton"
       onClick={props.toggleNavPanel}
       toggle={props.navPanelShowing}
-      circular>
+      circular
+      primary>
       <Icon
         className="Footer-icon"
         name='bars' /> Menu

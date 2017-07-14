@@ -1,10 +1,10 @@
 .App-content {
-  min-height: 75vh;
-  max-height: 75vh;
   position: relative;
-  overflow-x: hidden;
-  overflow-y: auto;
   padding-top: 1rem;
+}
+
+.App-sidebar {
+  min-height: 100vh !important;
 }
 
 .Content-header {
@@ -21,4 +21,60 @@
 
 .pull-right {
   text-align: right;
+}
+
+.NavPanel {
+  text-align: center !important;
+  letter-spacing: 0.25rem !important;
+}
+
+a {
+  color: rgba(0, 0, 0, 0.9) !important;
+  text-transform: uppercase !important;
+}
+
+a:active {
+  color: rgba(0, 0, 0, 0.9) !important;
+}
+
+a:link {
+  color: rgba(0, 0, 0, 0.9) !important;
+}
+
+a:visited {
+  color: rgba(0, 0, 0, 0.9) !important;
+}
+
+a:hover {
+  color: rgba(0, 0, 0, 0.9) !important;
+}
+
+.NavPanel-item {
+  padding: 0 !important;
+}
+
+.NavPanel-item:first-child {
+  border-top: 1px solid rgba(30, 32, 34, 0.2) !important;
+}
+
+.NavPanel-item:hover {
+  background: #F2F3F4 !important; 
+}
+
+.NavPanel-item__active {
+  background: #F2F3F4 !important;
+}
+
+.NavPanel-content {
+  padding-top: 1rem !important;
+  padding-bottom: 1rem !important;
+}
+
+.NavPanel-lastItem:hover {
+  background: #F2F3F4 !important;
+}
+
+.NavPanel-lastItem {
+  padding: 0 !important;
+  border-bottom: 1px solid rgba(30, 32, 34, 0.2) !important;  
 }

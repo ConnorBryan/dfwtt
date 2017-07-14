@@ -1,26 +1,12 @@
 .Footer {
-  min-height: 10vh;
-  max-height: 10vh;
   position: relative;
   border-top: 1px solid rgba(30, 32, 34, 0.2);
 }
 
-.Footer-emailButton {
-  position: absolute;
-  top: 22%;
-  left: 2%;
-}
-
-.Footer-callButton {
-  position: absolute;
-  top: 22%;
-  left: 45%;
-}
-
 .Footer-menuButton {
-  position: absolute;
-  top: 22%;
-  right: 2%;
+  position: fixed;
+  bottom: 1rem;
+  right: 1rem;
 }
 
 .Footer-icon {

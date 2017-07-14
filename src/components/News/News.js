@@ -29,7 +29,8 @@ export default props => (
             <Card.Content
               key={i}
               extra>
-              <Button fluid>
+              <Button
+                fluid>
                 <Link to={link.path}>
                   {link.title}
                 </Link>
