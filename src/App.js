@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+
 import {
   Button,
   Card,
@@ -13,44 +14,11 @@ import {
   Segment,
 } from 'semantic-ui-react';
 import './App.css';
-import NavPanel from './components/NavPanel/NavPanel';
-import DFWTT from './common/constants';
 
-const News = () => (
-  <div className="News">
-    <Header
-      className="Content-header"
-      as="h2">
-      News
-    </Header>
-    <Card.Group stackable doubling>
-      {DFWTT.news.map((news, i) => (
-        <Card key={i}>
-          <Image src={news.image} />
-          <Card.Content>
-            <Card.Header>
-              {news.header}
-            </Card.Header>
-            <Card.Description>
-              {news.description}
-            </Card.Description>
-          </Card.Content>
-          {news.links && news.links.length > 0 && news.links.map((link, i) => (
-            <Card.Content
-              key={i}
-              extra>
-              <Button fluid>
-                <Link to={link.path}>
-                  {link.title}
-                </Link>
-              </Button>
-            </Card.Content>
-          ))}
-        </Card>
-      ))}
-    </Card.Group>
-  </div>
-);
+import NavPanel from './components/NavPanel/NavPanel';
+import News from './components/News/News';
+
+import DFWTT from './common/constants';
 
 const About = () => (
  <div className="About">
@@ -329,7 +297,7 @@ class App extends Component {
                   toggleNavPanel={this.toggleNavPanel} />
               : (
                 <div className="Content-routes">
-                  <Route exact path="/" component={News} />
+                  <Route exact path="/" render={() => <News news={DFWTT.news} />} />
                   <Route path="/about" component={About} />
                   <Route path="/locations" component={Locations} />
                   <Route path="/coaching" render={() => <Coaching screen={this.state.coachingScreen} toggleScreen={this.toggleCoachingScreen} />} />
