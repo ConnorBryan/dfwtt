@@ -17,36 +17,10 @@ import './App.css';
 
 import NavPanel from './components/NavPanel/NavPanel';
 import News from './components/News/News';
+import About from './components/About/About';
 
 import DFWTT from './common/constants';
 
-const About = () => (
- <div className="About">
-    <Header
-      className="Content-header"
-      as="h2">
-      About
-    </Header>
-    <Segment>
-      <Message>
-        <Image src={DFWTT.logo} size="large" />
-        {DFWTT.about.summary}
-      </Message>
-      <Header as="h3">
-        Out Qualities
-      </Header>
-      <List bulleted divided relaxed="very">
-        {DFWTT.about.qualities.map((quality, i) => (
-          <List.Item key={i}>
-            <List.Content>
-              {quality}
-            </List.Content>
-          </List.Item>
-        ))}
-      </List>
-    </Segment>
-  </div>
-);
 
 const Locations = () => (
   <div className="Locations">
@@ -298,7 +272,7 @@ class App extends Component {
               : (
                 <div className="Content-routes">
                   <Route exact path="/" render={() => <News news={DFWTT.news} />} />
-                  <Route path="/about" component={About} />
+                  <Route path="/about" render={() => <About logo={DFWTT.logo} about={DFWTT.about} />} />
                   <Route path="/locations" component={Locations} />
                   <Route path="/coaching" render={() => <Coaching screen={this.state.coachingScreen} toggleScreen={this.toggleCoachingScreen} />} />
                   <Route path="/membership" component={Membership} />
