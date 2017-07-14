@@ -1,4 +1,15 @@
+import basic from './basic';
+import pages from './pages';
+import news from './news';
+import about from './about';
+import locations from './locations';
+import coaching from './coaching';
+
 export default {
-    logo: '/dfwtt.gif',
-    title: 'Dallas/Fort Worth Table Tennis',
+  ...basic,
+  ...pages,
+  ...news,
+  ...about,
+  ...locations,
+  ...coaching,
 };
