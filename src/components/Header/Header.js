@@ -10,13 +10,16 @@ export default props => (
       attached="top"
       fluid>
       <Menu.Item>
-        <Link to="/">
+        <Link
+          to="/"
+          onClick={() => props.navPanelShowing && props.toggleNavPanel()}>
           <Image src={props.logo} size="tiny" />
         </Link>
       </Menu.Item>
       <Link
         className="Header-title"
-        to="/">
+        to="/"
+        onClick={() => props.navPanelShowing && props.toggleNavPanel()}>
           <Header
             className="Header-header"
             as="h5">

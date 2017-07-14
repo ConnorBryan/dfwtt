@@ -25,6 +25,12 @@ class App extends Component {
   }
 
   toggleNavPanel = () => {
+    const pusher = document.getElementsByClassName('pusher')[0];
+
+    this.state.navPanelShowing
+      ? pusher.removeEventListener('click', this.toggleNavPanel)
+      : pusher.addEventListener('click', this.toggleNavPanel);
+      
     this.setState(prevState => ({ navPanelShowing: !prevState.navPanelShowing }));
   }
 
@@ -82,10 +88,12 @@ class App extends Component {
         <div className="App">
           <Header
             logo={DFWTT.logo}
-            title={DFWTT.title} />
+            title={DFWTT.title}
+            navPanelShowing={this.state.navPanelShowing}
+            toggleNavPanel={this.toggleNavPanel} />
           <Contact
-            email={DFWTT.email}
-            phone={DFWTT.phone} />
+              navPanelShowing={this.state.navPanelShowing}
+              toggleNavPanel={this.toggleNavPanel} />
           <div className="App-content">
             <Sidebar.Pushable className="App-sidebar">
               <Sidebar
@@ -95,22 +103,19 @@ class App extends Component {
                 visible={this.state.navPanelShowing}
                 vertical>
                 {DFWTT.pages.map((page, i) => (
-                  <Menu.Item
-                    key={i}
-                    className={`
-                      ${this.getActiveRoute() === page.value ? 'NavPanel-item__active' : ''}
-                    `}
-                    onClick={() => this.clickThroughListItem(page.title)}>
-                    <Link
-                      id={page.title}
-                      to={page.path}
-                      onClick={this.toggleNavPanel} >
+                  <Link
+                    id={page.title}
+                    to={page.path}>
+                    <Menu.Item
+                      key={i}
+                      className={this.getActiveRoute() === page.value ? 'NavPanel-item__active' : ''}
+                      onClick={this.toggleNavPanel}>
                       {page.title}
-                    </Link>
-                  </Menu.Item>
+                    </Menu.Item>
+                  </Link>
                 ))}
               </Sidebar>
-              <Sidebar.Pusher>
+              <Sidebar.Pusher ref={ref => this.pusher = ref}>
                 <Route exact path="/" render={this.renderNews} />
                 <Route path="/about" render={this.renderAbout} />
                 <Route path="/locations" render={this.renderLocations} />

@@ -6,16 +6,14 @@ export default props => (
   <div className="Contact">
       <Menu
         fluid
-        tabular>
-        <Menu.Item>
-          <a href={`mailto:${props.email}`}>
-            <Icon name="mail outline" />
-            {props.email}
-          </a>
-        </Menu.Item>
-        <Menu.Item>
-          <Icon name="text telephone" />
-          {props.phone}
+        >
+        <Menu.Item
+          active={props.navPanelShowing}
+          as={Button}
+          position="right"
+          onClick={props.toggleNavPanel}>
+          <Icon name="bars" />
+            Menu
         </Menu.Item>
       </Menu>
   </div>
