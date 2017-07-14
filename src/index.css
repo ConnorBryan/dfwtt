@@ -1,11 +1,3 @@
-.Header {
-  min-height: 10vh;
-  max-height: 10vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .Contact {
   min-height: 5vh;
 }

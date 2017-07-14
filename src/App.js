@@ -3,11 +3,11 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 
 import {
   Button,
-  Header,
   Icon,
 } from 'semantic-ui-react';
 import './App.css';
 
+import Header from './components/Header/Header';
 import NavPanel from './components/NavPanel/NavPanel';
 import News from './components/News/News';
 import About from './components/About/About';
@@ -82,14 +82,9 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <div className="Header">
-            <Link to='/'>
-                <Header
-                  as="h3"
-                  image={DFWTT.logo}
-                  content={DFWTT.title} />
-            </Link>
-          </div>
+          <Header
+            logo={DFWTT.logo}
+            title={DFWTT.title} />
           <div className="Contact">
             <Button.Group fluid>
               <a href={`mailto:${DFWTT.email}`}>
