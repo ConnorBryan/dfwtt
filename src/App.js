@@ -23,7 +23,7 @@ class App extends Component {
     this.state = {
       navPanelShowing: false,
       coachingScreen: 0,
-    }
+    };
   }
 
   toggleNavPanel = () => {
@@ -41,12 +41,42 @@ class App extends Component {
     else if (path.indexOf('/locations') > -1) return 2;
     else if (path.indexOf('/coaching') > -1) return 3;
     else if (path.indexOf('/membership') > -1) return 4;
+    
     return 0;
   }
 
   clickThroughListItem = id => {
     document.getElementById(id).click();
   }
+
+  renderNews = () => (
+    <News news={DFWTT.news} />
+  )
+
+  renderAbout = () => (
+    <About
+      logo={DFWTT.logo}
+      about={DFWTT.about} />
+  )
+
+  renderLocations = () => (
+    <Locations
+      locations={DFWTT.locations} />
+  )
+
+  renderCoaching = () => (
+    <Coaching
+      screen={this.state.coachingScreen}
+      toggleScreen={this.toggleCoachingScreen}
+      pricing={DFWTT.coaching.pricing}
+      instructors={DFWTT.coaching.instructors} />
+  )
+
+  renderMembership = () => (
+    <Membership
+      dropBy={DFWTT.dropBy}
+      membership={DFWTT.membership} />
+  )
 
   render() {
     return (
@@ -83,11 +113,11 @@ class App extends Component {
                   toggleNavPanel={this.toggleNavPanel} />
               : (
                 <div className="Content-routes">
-                  <Route exact path="/" render={() => <News news={DFWTT.news} />} />
-                  <Route path="/about" render={() => <About logo={DFWTT.logo} about={DFWTT.about} />} />
-                  <Route path="/locations" render={() => <Locations locations={DFWTT.locations} />} />
-                  <Route path="/coaching" render={() => <Coaching screen={this.state.coachingScreen} toggleScreen={this.toggleCoachingScreen} pricing={DFWTT.coaching.pricing} instructors={DFWTT.coaching.instructors} /> } />
-                  <Route path="/membership" render={() => <Membership dropBy={DFWTT.dropBy} membership={DFWTT.membership} />} />
+                  <Route exact path="/" render={this.renderNews} />
+                  <Route path="/about" render={this.renderAbout} />
+                  <Route path="/locations" render={this.renderLocations} />
+                  <Route path="/coaching" render={this.renderCoaching} />
+                  <Route path="/membership" render={this.renderMembership} />
                 </div>
               )}
           </div>
