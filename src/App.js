@@ -18,9 +18,9 @@ import './App.css';
 import NavPanel from './components/NavPanel/NavPanel';
 import News from './components/News/News';
 import About from './components/About/About';
+import Membership from './components/Membership/Membership';
 
 import DFWTT from './common/constants';
-
 
 const Locations = () => (
   <div className="Locations">
@@ -173,38 +173,6 @@ const Coaching = props => (
   </div>
 );
 
-const Membership = () => (
-  <div className="Membership">
-    <Header
-      className="Content-header"
-      as="h2">
-      Membership
-    </Header>
-    <Segment>
-      <Item.Group divided>
-        {DFWTT.membership.map((_package, i) => (
-          <Item key={i}>
-            <Item.Content>
-              <Item.Header>
-                {_package.package}
-              </Item.Header>
-              <Item.Description>
-                Single: <strong>${_package.single}.00</strong>
-              </Item.Description>
-              <Item.Description>
-                Family of two: <strong>${_package.family2}.00</strong>
-              </Item.Description>
-              <Item.Description>
-                Family of three: <strong>${_package.family3}.00</strong>
-              </Item.Description>
-            </Item.Content>
-          </Item>
-        ))}
-      </Item.Group>
-    </Segment>
-  </div>
-);
-
 class App extends Component {
   constructor() {
     super();
@@ -275,7 +243,7 @@ class App extends Component {
                   <Route path="/about" render={() => <About logo={DFWTT.logo} about={DFWTT.about} />} />
                   <Route path="/locations" component={Locations} />
                   <Route path="/coaching" render={() => <Coaching screen={this.state.coachingScreen} toggleScreen={this.toggleCoachingScreen} />} />
-                  <Route path="/membership" component={Membership} />
+                  <Route path="/membership" render={() => <Membership dropBy={DFWTT.dropBy} membership={DFWTT.membership} />} />
                 </div>
               )}
           </div>

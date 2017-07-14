@@ -4,6 +4,7 @@ import news from './news';
 import about from './about';
 import locations from './locations';
 import coaching from './coaching';
+import membership from './membership';
 
 export default {
   ...basic,
@@ -12,4 +13,5 @@ export default {
   ...about,
   ...locations,
   ...coaching,
+  ...membership,
 };
