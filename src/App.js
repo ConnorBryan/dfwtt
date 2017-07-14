@@ -121,11 +121,13 @@ class App extends Component {
                 <Route path="/locations" render={this.renderLocations} />
                 <Route path="/coaching" render={this.renderCoaching} />
                 <Route path="/membership" render={this.renderMembership} />
+                <Footer
+                  phone={DFWTT.phone}
+                  email={DFWTT.email}
+                  navPanelShowing={this.state.navPanelShowing}
+                  toggleNavPanel={this.toggleNavPanel} />
               </Sidebar.Pusher>
             </Sidebar.Pushable>
-            <Footer
-              navPanelShowing={this.state.navPanelShowing}
-              toggleNavPanel={this.toggleNavPanel} />
           </div>
         </div>
       </Router>

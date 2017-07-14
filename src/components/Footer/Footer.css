@@ -1,14 +1,5 @@
 .Footer {
   position: relative;
-  border-top: 1px solid rgba(30, 32, 34, 0.2);
-}
-
-.Footer-menuButton {
-  position: fixed;
-  bottom: 1rem;
-  right: 1rem;
-}
-
-.Footer-icon {
-  margin: 0 !important;  
+  margin-top: 2rem;
+  min-height: 10vh;
 }
