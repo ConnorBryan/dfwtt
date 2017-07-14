@@ -5,3 +5,14 @@
   align-items: center;
   justify-content: center;
 }
+
+.Header-menu {
+  height: 80px !important;
+}
+
+.Header-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 1.6rem;
+}
