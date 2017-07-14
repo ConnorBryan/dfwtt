@@ -8,6 +8,7 @@ import {
 import './App.css';
 
 import Header from './components/Header/Header';
+import Contact from './components/Contact/Contact';
 import NavPanel from './components/NavPanel/NavPanel';
 import News from './components/News/News';
 import About from './components/About/About';
@@ -85,20 +86,10 @@ class App extends Component {
           <Header
             logo={DFWTT.logo}
             title={DFWTT.title} />
-          <div className="Contact">
-            <Button.Group fluid>
-              <a href={`mailto:${DFWTT.email}`}>
-                <Button>
-                  <Icon name="mail outline" />
-                  {DFWTT.email}
-                </Button>
-              </a>
-              <Button>
-                <Icon name="text telephone" />
-                {DFWTT.phone}
-              </Button>
-            </Button.Group>
-          </div>
+          <Contact
+            email={DFWTT.email}
+            phone={DFWTT.phone} />
+
           <div className="Content">
             {this.state.navPanelShowing
               ? <NavPanel
