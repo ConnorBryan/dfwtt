@@ -26,19 +26,24 @@ const DFWTT = {
       value: 0,
     },
     {
+      title: 'About',
+      path: '/about',
+      value: 1,
+    },
+    {
       title: 'Locations',
       path: '/locations',
-      value: 1,
+      value: 2,
     },
     {
       title: 'Coaching',
       path: '/coaching',
-      value: 2,
+      value: 3,
     },
     {
       title: 'Membership',
       path: '/membership',
-      value: 3,
+      value: 4,
     },
   ],
   news: [
@@ -58,6 +63,20 @@ const DFWTT = {
       ],
     },
   ],
+  about: {
+    summary: 'Welcome to the DFW Table Tennis (DFWTT) website.  We are one of the leading table tennis membership organizations in the nation, affiliated with the USA Table Tennis (USATT) the governing body of table tennis in the United States.',
+    qualities: [
+      'DFWTT is an organization that promotes, develops and implements programs for the sport of table tennis regardless of the player’s experience, through family values, excellence and quality in a sportsmanship environment in the Dallas & Fort Worth area.',
+      'Our main goal is to build a stronger table tennis community in the Metroplex!  DFWTT is open to all ages, ethnicities, genders and playing levels.  Players will have the opportunity to learn on and off the table skills, make lasting friends and have lots of fun!  Come and play this amazing, popular and rapidly growing Olympic sport!',
+      'DFWTT is one of the largest and well established table tennis organizations in the Dallas and Ft. Worth area.  It was established in 1996.  In the past decade DFWTT has grown from one to multiple locations and currently has over 100 active members.',
+      'DFWTT multiple locations offer great playing conditions, with excellent lighting, flooring and brand new tournament tables.',
+      'DFWTT has USATT certified Coaches and offers instructions at all levels – from beginners to advanced players.  We provide quality table tennis training; private and group lessons are also available. We specialize in the development and training of Junior players.',
+      'DFWTT facilitates and organizes on a regular basis sanctioned and non-sanctioned Tournaments.  DFWTT member players have participated in many major national and regional table tennis tournaments.   More info can be found on the Tournaments section of the website.  Besides tournaments, DFWTT offers Leagues and Corporate challenge events as well.',
+      'DFWTT has players ranging from all levels – from beginners to Elite players with over +2000 ratings.  Its players come from all over the world, namely Taiwan, China, India, Malaysia, Venezuela, Honduras, Korea, Hungary, Russia, Thailand, Vietnam, Indonesia, England, Philippines, Mexico, Japan, Sweden, Jamaica, U.S. and many other countries.  No matter what level you are at, you will always find someone of your level to play with at our locations.  Fun is always our motto!',
+      'If you are new to table tennis or you are interested in joining DFWTT, please browse our website, gives us a call at 214-240-5975 or visit us during club hours (club playing location) and we’ll be happy to welcome you to our organization.  You can also email us at dfwtt1@gmail.com.',
+      'DFWTT is the place where you can enjoy great table tennis, make new friends or compete!',
+    ],
+  },
   locations: [
     {
       image: '/cimarron.jpg',
@@ -137,7 +156,61 @@ const DFWTT = {
       },
     ],
     instructors: [
-
+      {
+        image: '/daniel_rutenberg.JPG',
+        name: 'Daniel Rutenberg',
+        education: [
+          'Bachelor Degree in Business Administration',
+          'Masters in Business Administration',
+          'International Direct Marketer of the Year 2007',
+        ],
+        background: [
+          'USATT 2012 Paralympic Coach of the Year',
+          'USATT Junior Advisory Committee - Member',
+          'USATT Coaching Adivsory Committee - Member',
+          'USATT Para Table Tennis Task Force - Staff Liaison',
+          '2010-2012 USATT Paralympic National Team Coach',
+          'ITTF PTT Level 1 Coach Certification',
+          'ITTF PTT Course Conductor',
+          'Active USATT member',
+          'USATT certified Umpire',
+          'USATT National Coach',
+          'Specializing in Junior training',
+          'USATT 2010 Paralympic Coach of the Year',
+          'USATT 2009 Paralympic Coach of the Year',
+          '2009 ParaPanAmerican Table Tennis Championship, Margarita Island, Venezuela - Team USA Head Coach',
+          'Selected as one of five finalists for the Volunteer Coach of the Year 2005 U.S. Olympic Committee\'s (USOC)  Coach of the Year Program',
+          '2005 USATT Volunteer Coach of the Year',
+          '2007, 2008 and 2009 instructor at Tzu Chi Foundation U.S. - School',
+          '2005-2013 Maccabi Games Team Dallas - Table Tennis Head Coach',
+          '2005 & 2006 Sport Information Supervisor NCTTA and ACIU Collegiate Championship',
+          '1989 Created Table Tennis Club at Syracuse University',
+          '1974-1979 Played for Venezuelan Junior Table Tennis team',
+        ],
+      },
+      {
+        image: '/nelson_ramos.JPG',
+        name: 'Nelson Ramos',
+        education: [
+          'Dallas / Ft. Worth Table Tennis Club',
+          'Heights Recreation Center - Richardson, TX',
+          'Irving Recreation Center - Irving, TX',
+          'Jewish Community Center - Dallas, TX',
+          'Lewisville Table Tennis Club - Lewisville, TX',
+          'International Federation of Table Tennis since 1988',
+          'United States Association of Table Tennis since 1987',
+        ],
+        background: [
+          '2011 DFWTT Spring Open: 2nd Place - Class A Singles / 3rd Place - Class A Doubles,',
+          '2011 Texas Winter Games: 3rd Place - Class A Singles / 2nd Place - Class A Doubles',
+          '2010 DFWTT Fall Open: 3rd Place - Class A Singles / 2010 DFWTT Spring Open',
+          '2010 Texas Winter Games: 1st Place - U2400 / 2nd Place - U2400',
+          '2009 DFWTT Fall Open: 2nd Place - U2400',
+          '2005 Double Ten: 1st Place - Class A Doubles',
+          '2004 DFWTT Fall Open: 1st Place - Class A Singles',
+          '2003 DFWTT Summer RR: 2nd Place - Class A Singles /  2nd Place - Class A Doubles',
+        ],
+      },
     ],
   },
   dropBy: 3,
@@ -222,6 +295,33 @@ const News = () => (
   </div>
 );
 
+const About = () => (
+ <div className="About">
+    <Header
+      className="Content-header"
+      as="h2">
+      About
+    </Header>
+    <Segment>
+      <Message>
+        {DFWTT.about.summary}
+      </Message>
+      <Header as="h3">
+        Out Qualities
+      </Header>
+      <List bulleted divided relaxed="very">
+        {DFWTT.about.qualities.map((quality, i) => (
+          <List.Item key={i}>
+            <List.Content>
+              {quality}
+            </List.Content>
+          </List.Item>
+        ))}
+      </List>
+    </Segment>
+  </div>
+);
+
 const Locations = () => (
   <div className="Locations">
     <Header
@@ -301,41 +401,76 @@ const Pricing = () => (
 );
 
 const Instructors = () => (
-  <p>Instructors</p>
+  <Card.Group
+    className="Instructors"
+    doubling
+    stackable>
+    {DFWTT.coaching.instructors.map((instructor, i) => (
+      <Card key={i}>
+        <Image src={instructor.image} centered />
+        <Card.Content>
+          <Card.Header>
+            {instructor.name}
+          </Card.Header>
+        </Card.Content>
+        <Card.Content extra>
+          <Card.Description>
+            <Header as="h4">
+              Education & Experience
+            </Header>
+            <List>
+              {instructor.education.map((item, i) => (
+                <List.Item key={i}>
+                  {item}
+                </List.Item>
+              ))}
+            </List>
+          </Card.Description>
+        </Card.Content>
+        <Card.Content extra>
+          <Card.Description>
+            <Header as="h4">
+              Background
+            </Header>
+            <List>
+              {instructor.background.map((item, i) => (
+                <List.Item key={i}>
+                  {item}
+                </List.Item>
+              ))}
+            </List>
+          </Card.Description>
+        </Card.Content>
+      </Card>
+    ))}
+  </Card.Group>
 );
 
 const Coaching = props => (
-  <Router>
-    <div className="Coaching">
-      <Header
-        className="Content-header"
-        as="h2">
-        Coaching
-      </Header>
-        <Menu attached="top">
-          <Menu.Item
-            active={props.screen === 0}
-            onClick={props.toggleScreen}>
-            Pricing
-          </Menu.Item>
-          <Menu.Item
-            active={props.screen === 1}
-            onClick={props.toggleScreen}>
-            Instructors
-          </Menu.Item>
-        </Menu>
-        <Segment attached="bottom">
-          {
-            props.screen === 0 ? (
-              <Pricing />
-            )
-            : (
-              <Instructors />
-            )
-          }
-        </Segment>
-    </div>
-  </Router>
+  <div className="Coaching">
+    <Header
+      className="Content-header"
+      as="h2">
+      Coaching
+    </Header>
+      <Menu attached="top">
+        <Menu.Item
+          active={props.screen === 0}
+          onClick={() => props.toggleScreen(0)}>
+          Pricing
+        </Menu.Item>
+        <Menu.Item
+          active={props.screen === 1}
+          onClick={() => props.toggleScreen(1)}>
+          Instructors
+        </Menu.Item>
+      </Menu>
+      <Segment
+        className="Coaching-content"
+        attached="bottom">
+        {props.screen === 0 ? <Pricing /> : <Instructors />}
+      </Segment>
+  </div>
 );
 
 const Membership = () => (
@@ -383,16 +518,17 @@ class App extends Component {
     this.setState(prevState => ({ navPanelShowing: !prevState.navPanelShowing }));
   }
 
-  toggleCoachingScreen = () => {
-    this.setState(prevState => ({ coachingScreen: +!prevState.coachingScreen }));
+  toggleCoachingScreen = coachingScreen => {
+    this.setState(prevState => ({ coachingScreen }));
   }
 
   getActiveRoute = () => {
     const path = window.location.href;
 
-    if (path.indexOf('/locations') > -1) return 1;
-    else if (path.indexOf('/coaching') > -1) return 2;
-    else if (path.indexOf('/membership') > -1) return 3;
+    if (path.indexOf('/about') > -1) return 1;
+    else if (path.indexOf('/locations') > -1) return 2;
+    else if (path.indexOf('/coaching') > -1) return 3;
+    else if (path.indexOf('/membership') > -1) return 4;
     return 0;
   }
 
@@ -402,26 +538,30 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <div className="Header">
-          <Header
-            as="h3"
-            image={DFWTT.logo}
-            content={DFWTT.title} />
-        </div>
-        <div className="Contact">
-          <Button.Group fluid>
-            <Button>
-              <Icon name="mail outline" />
-              {DFWTT.email}
-            </Button>
-            <Button>
-              <Icon name="text telephone" />
-              {DFWTT.phone}
-            </Button>
-          </Button.Group>
-        </div>
-        <Router>
+      <Router>
+        <div className="App">
+          <div className="Header">
+            <Link to='/'>
+                <Header
+                  as="h3"
+                  image={DFWTT.logo}
+                  content={DFWTT.title} />
+            </Link>
+          </div>
+          <div className="Contact">
+            <Button.Group fluid>
+              <a href={`mailto:${DFWTT.email}`}>
+                <Button>
+                  <Icon name="mail outline" />
+                  {DFWTT.email}
+                </Button>
+              </a>
+              <Button>
+                <Icon name="text telephone" />
+                {DFWTT.phone}
+              </Button>
+            </Button.Group>
+          </div>
           <div className="Content">
             {this.state.navPanelShowing
               ? <NavPanel
@@ -431,25 +571,26 @@ class App extends Component {
               : (
                 <div className="Content-routes">
                   <Route exact path="/" component={News} />
+                  <Route path="/about" component={About} />
                   <Route path="/locations" component={Locations} />
                   <Route path="/coaching" render={() => <Coaching screen={this.state.coachingScreen} toggleScreen={this.toggleCoachingScreen} />} />
                   <Route path="/membership" component={Membership} />
                 </div>
               )}
           </div>
-        </Router>
-        <div className="Footer">
-            <Button
-              className="Footer-menuButton"
-              onClick={this.toggleNavPanel}
-              toggle={this.state.navPanelShowing}
-              circular>
-              <Icon
-                className="Footer-icon"
-                name='bars' /> Menu
-            </Button>
+          <div className="Footer">
+              <Button
+                className="Footer-menuButton"
+                onClick={this.toggleNavPanel}
+                toggle={this.state.navPanelShowing}
+                circular>
+                <Icon
+                  className="Footer-icon"
+                  name='bars' /> Menu
+              </Button>
+          </div>
         </div>
-      </div>
+      </Router>
     );
   }
 }
