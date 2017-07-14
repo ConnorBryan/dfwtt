@@ -19,64 +19,9 @@ import NavPanel from './components/NavPanel/NavPanel';
 import News from './components/News/News';
 import About from './components/About/About';
 import Membership from './components/Membership/Membership';
+import Locations from './components/Locations/Locations';
 
 import DFWTT from './common/constants';
-
-const Locations = () => (
-  <div className="Locations">
-    <Header
-      className="Content-header"
-      as="h2">
-      Locations
-    </Header>
-    <Card.Group stackable doubling>
-      {DFWTT.locations.map((location, i) => (
-        <Card key={i}>
-          <Image src={location.image} />
-          <Card.Content>
-            <Card.Header>
-              {location.header}
-            </Card.Header>
-            <Card.Meta>
-              {location.address}
-            </Card.Meta>
-          </Card.Content>
-          {location.notice && (
-            <Card.Content extra>
-              <Message compact>
-                <Message.Header>
-                  {location.notice.header}
-                </Message.Header>
-                {location.notice.content}
-              </Message>
-            </Card.Content>
-          )}
-          <Card.Content extra>
-            <Card.Description>
-              <Header as="h4">
-                Schedule
-              </Header>
-              <List>
-                {location.schedule.map((day, i) => (
-                  <List.Item key={i}>
-                    <strong>{day.day}:</strong> {day.time}
-                  </List.Item>
-                ))}
-              </List>
-            </Card.Description>
-          </Card.Content>
-          <Card.Content extra>
-            <a href={location.directions}>
-              <Button fluid>
-                Get Directions
-              </Button>
-            </a>
-          </Card.Content>
-        </Card>
-      ))}
-    </Card.Group>
-  </div>
-);
 
 const Pricing = () => (
   <Item.Group divided>
@@ -241,7 +186,7 @@ class App extends Component {
                 <div className="Content-routes">
                   <Route exact path="/" render={() => <News news={DFWTT.news} />} />
                   <Route path="/about" render={() => <About logo={DFWTT.logo} about={DFWTT.about} />} />
-                  <Route path="/locations" component={Locations} />
+                  <Route path="/locations" render={() => <Locations locations={DFWTT.locations} />} />
                   <Route path="/coaching" render={() => <Coaching screen={this.state.coachingScreen} toggleScreen={this.toggleCoachingScreen} />} />
                   <Route path="/membership" render={() => <Membership dropBy={DFWTT.dropBy} membership={DFWTT.membership} />} />
                 </div>
